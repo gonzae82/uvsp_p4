@@ -1,0 +1,82 @@
+# Este arquivo gerencia TODOS os serviços do projeto.
+# Rode-o com "docker compose up --build" a partir da pasta raiz.
+
+services:
+  # --- Serviço 1: O Simulador de Sensores ---
+  simulador:
+    # 1. Diz ao Docker para construir este serviço
+    #    usando o Dockerfile dentro da pasta ./simulador
+    build: ./simulador
+    
+    # 2. Nome do contêiner para fácil identificação
+    container_name: simulador_datacenter
+    
+    # 3. Reinicia automaticamente
+    restart: unless-stopped
+    
+    # 4. Passa as variáveis de ambiente para o script Python
+    #    (Note: Estamos passando as variáveis diretamente
+    #    do seu ambiente/terminal. É mais seguro.)
+    environment:
+      - PYTHONUNBUFFERED=1
+
+      # --- PREENCHA SUAS CREDENCIAIS AQUI ---
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+ 
+      # --- Configurações da Simulação ---
+      - SEND_INTERVAL=60
+      
+      # --- Parâmetros dos Sensores Normais ---
+      - NUM_SENSORES_NORMAIS=10
+      - TEMP_NORMAL_BASE=22.0
+      - TEMP_NORMAL_VAR=1.0
+      - UMID_NORMAL_BASE=45.0
+      - UMID_NORMAL_VAR=2.0
+      
+      # --- Parâmetros dos Sensores com Anomalia ---
+      - NUM_SENSORES_ANOMALIA=5
+      - TEMP_ANOMALIA_BASE=28.0
+      - TEMP_ANOMALIA_VAR=3.0
+      - UMID_ANOMALIA_BASE=35.0
+      - UMID_ANOMALIA_VAR=5.0
+      - ANOMALIA_INTERVALO_HORAS=6
+      - ANOMALIA_DURACAO_MIN=30
+  
+    dns:
+        - 8.8.8.8
+
+  # --- Serviço 2: O Dashboard Streamlit ---
+  dashboard:
+    # 1. Constrói este serviço usando o
+    #    Dockerfile dentro da pasta ./dashboard
+    build: ./dashboard
+    
+    # 2. Nome do contêiner
+    container_name: dashboard_datacenter
+    
+    # 3. Reinicia automaticamente
+    restart: unless-stopped
+    
+    # 4. Mapeamento de Porta:
+    #    Expõe a porta 8501 do contêiner para a porta 8501
+    #    da sua máquina, para que você possa acessá-lo.
+    ports:
+      - "9501:9501"
+      
+    # 5. Mapeamento de Volume:
+    #    Conecta sua pasta local .streamlit (com o secrets.toml)
+    #    para a pasta /app/.streamlit dentro do contêiner.
+    #    É ASSIM que o dashboard lê suas credenciais.
+    volumes:
+      - ./dashboard/.streamlit:/app/.streamlit
+    
+    dns:
+      - 8.8.8.8
+    
+    environment:
+      - PYTHONUNBUFFERED=1
+
+      # --- PREENCHA SUAS CREDENCIAIS AQUI ---
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
