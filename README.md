@@ -5,7 +5,7 @@ DRP14 Turma 03 - Grupo 08 .
 
 ## Acessível em:
 Site:
-https://dev.elido.com.br:9501
+https://uvsp.elido.com.br:9501
 
 Github:
 https://github.com/gonzae82/uvsp_p4
