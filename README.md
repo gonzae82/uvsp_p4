@@ -1,11 +1,11 @@
-# Monitoramento de Temperatura para Servidores e Data Centers
+# Análise de dados em escala com IoT e Machine Learning para Gestão Térmica de Data Center
 
 Trabalho desenvolvido para o Projeto Integrador da UNIVESP na disciplina Projeto Integrador em Computação IV.
-DRP14,Grupo 0.
+DRP14 Turma 03 - Grupo 08 .
 
 ## Acessível em:
 Site:
-https://www.elido.com.br/uvsp/p4
+https://dev.elido.com.br:9501
 
 Github:
 https://github.com/gonzae82/uvsp_p4
@@ -23,21 +23,17 @@ O projeto foi desenvolvido como parte do Projeto Integrador em Computação III 
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="60" height="60"/>       
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" width="60" height="60"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" width="60" height="60"/>
-  
 </div>
 
 ## Disciplina
 
-**Nome**: Projeto Integrador em Computação IV - DRP14 Grupo 10
+**Nome**: Projeto Integrador em Computação IV - DRP14 Turma 03 - Grupo 08 
 
 ## Participantes
-
 - Elido Rivarola Gonzalez
 - André dos Santos Lourenço
 - Edvan Araújo
-
-
-
+- Roberto Ferreira dos Santos
 
 
 ## Cursos
@@ -46,4 +42,4 @@ O projeto foi desenvolvido como parte do Projeto Integrador em Computação III 
 - Bacharelado em Tecnologia da Informação 
 
 ## Orientadora
-Rosangela de Oliveira Pereira
+Thiago Luccas Correa dos Santos Gomes 
